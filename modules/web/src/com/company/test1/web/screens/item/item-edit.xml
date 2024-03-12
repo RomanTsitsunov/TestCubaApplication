@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://itemEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.test1.web.screens.item">
+    <data>
+        <instance id="itemDc"
+                  class="com.company.test1.entity.Item">
+            <view extends="_local">
+                <property name="store" view="_minimal">
+                    <property name="idStore"/>
+                </property>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="itemDc">
+            <column width="350px">
+                <maskedField id="idItemField" mask="hhhhhhhh-hhhh-hhhh-hhhh-hhhhhhhhhhhh" property="idItem"/>
+                <pickerField id="storeField" property="store">
+                    <actions>
+                        <action id="lookup" type="picker_lookup"/>
+                        <action id="clear" type="picker_clear"/>
+                    </actions>
+                </pickerField>
+                <textField id="nameField" property="name"/>
+                <textField id="countField" property="count"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
